@@ -2,10 +2,9 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+
+  - response
+
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -17,223 +16,311 @@ includes:
 search: true
 ---
 
-# Introduction
+# Social Discovery API
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Api Documentation for sending report orders via API.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
 # Authentication
 
-> To authorize, use this code:
+> Sample Header parameters:
 
 ```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+apikey = 'FSDFSDF6AGUIRFIEJIIJFIEP590CDB2Q8'
+secret = 'FSDFDS1LM26D5NSCHAQHK6VA4DSDSDSD3'
+Content-Type = 'application/json'
+Authorization = 'Basic c3RhZ2luZzpzdGdsdFnaW5n'
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
 
 ```javascript
-const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `mingmingmingming` AND `swswswswswswswsw` with your API key and Secret.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+Social Discovery uses API keys to allow access to the API.
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Access and Keys are manually generated and given to specific users.
 
-`Authorization: meowmeowmeow`
+Social Discovery expects for the API key and SECRET KEY to be included in all API requests to the server in a header that looks like the following:
+
+`apikey: mingmingmingming`
+
+`secret: swswswswswswswsw`
+
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>mingmingmingming</code> and <code>swswswswswswswsw</code> with your personal API key and secret.
 </aside>
 
-# Kittens
+# Orders
 
-## Get All Kittens
+## Get All Orders
 
 ```ruby
-require 'kittn'
+OUTPUT
+{
+    "status": true,
+    "people": [
+        {
+          1. #{person_hash} },
+        {
+          2. #{person_hash} }
+    ]
+}
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
 ```
 
-```python
-import kittn
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
 
 ```javascript
-const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
 ```
 
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
+This endpoint retrieves all orders.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+`GET http://staging.socialdiscoveryiq.com/api/v1/people`
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember — Authentication header included: apikey & secret
 </aside>
 
-## Get a Specific Kitten
+## Request an Order
+
+> Raw hash base structure for the new order request.
 
 ```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+ "person":
+  {"case_id": "case1000011",
+   "first_name": "Michael",
+   "middle_name": "John",
+   "last_name": "Doe",
+   "gender": "male",
+   "dob": "01/19/1985",
+   "alias": "Mike",
+   "details":
+    {"ethnicity": ["ethnicity"],
+     "emails": [""],
+     "phones":
+      [{"phone_number": "9999999", "type": "Cell"},
+       {"phone_number": "88888888", "type": "Home"}],
+     "addresses":
+      [{"type": "Current",
+        "address": "",
+        "city": "Los Angeles",
+        "state": "California",
+        "zip": "1630"}],
+     "employment": ["maintenance"],
+     "schools": ["New state college"],
+     "relationships": ["brother"],
+     "physical_descriptions": ["thin", "muscular"],
+     "report_highlights": "yes",
+     "items_added": ""},
+   "claim": "",
+   "from": "",
+   "orders_attributes":
+    {"0":
+      {"networks": "",
+       "specifications": {"advance_options": ["Facebook - Friends"]},
+       "kind": "analyst_quick_check"
+      }
+    },
+   "description": "Test description"
+   },
+ "to": "Today"
+}
+
+OUTPUT
+{
+    "status": true,
+    "person_id": "#{response_id}"
 }
 ```
 
-This endpoint retrieves a specific kitten.
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint request a new order.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST http://staging.socialdiscoveryiq.com/api/v1/people`
+
+<aside class="success">
+Remember — Authentication header included: apikey & secret
+</aside>
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+person (required) | person hash as a parameter Validation: Must be a hash
+`person[report_type]` (optional) | Must be one of `Social Media Quick Scan`, `Social Media Investigative Report`
+`person[case_id]` (required) | Must be a String
+`person[first_name]` (required) | Must be a String
+`person[middle_name]` (required) | Must be a String
+`person[last_name]` (required) | Must be a String
+`person[gender]` (required) | Must be one of `male`, `female`, `unknown`
+`person[dob]` (optional) | Format: `mm/dd/yyyy`. Must be a String
+`person[alias]` (optional) | Must be a String
+`person[details]` (required) | Must be a Hash (Details Hash)
+`person[details][ethnicity]` (optional) | Should be in Array of Strings - Must be an array of any type
+`person[details][emails]` (optional) | Should be in Array of Strings - Must be an array of any
+`person[details][phones]` (optional) | Should be an Array of Hashes - Must be an array of nested elements
+`person[details][phones][phone_number]` (optional) | Must be a String
+`person[details][phones][type]` (optional) | Must be one of `Home`, `Cell`, `Work`, `Possible`, `Other`
+`person[details][employments]` (optional) | Should be an array of Hashes - Must be an Array of nested elements
+`person[details][employments][employer_type]` (optional) | Must be one of: `Previous Employer`, `Current Employer`
+`person[details][employments][name]` (optional) | Must be a String
+`person[details][employments][city_/_state]` (optional) | Must be a String
+`person[details][employments][position]` (optional) | Must be a String
+`person[details][employments][start_end_year]` (optional) | Must be a String
+`person[details][educations]` (optional) | Array of Hashes - Must be an Array of nested elements
+`person[details][educations][institution]` (optional) | Must be a String
+`person[details][educations][institution_type]` (optional) | Must be a String
+`person[details][educations][city_/_state]` (optional) | Must be a String
+`person[details][educations][year_graduated]` (optional) | Must be a String
+`person[details][educations][degree_type]` (optional) | Must be a String
+`person[details][addresses]` (optional) | Array of Hashes - Must be an Array of nested elements
+`person[details][addresses][type]` (optional) | Must be one of: `Current`, `Past`, `Possible`
+`person[details][addresses][address]` (optional) | Must be a String
+`person[details][addresses][city]` (optional) | Must be a String
+`person[details][addresses][state]` (optional) | Must be a String
+`person[details][addresses][zip]` (optional) | Must be a String
+`person[details][employment]` (optional) | Must be an Array of any type
+`person[details][schools]` (optional) | Must be an Array of any type
+`person[details][relationships]` (optional) | Must be an Array of any type
+`person[details][physical_descriptions]` (optional) | Must be an Array of any type
+`person[details][date_range]` (optional) | Must be a String
+`person[details][report_highlights]` (optional) | Must be a String
+`person[details][items_added]` (optional) | Must be a String
+`person[claim]` (optional) | Must be a String
+`person[from]` (optional) | Must be a String
+`person[orders_attributes]` (optional) | Must be a Hash
+`person[orders_attributes][0]` (optional) | Must be a Hash
+`person[orders_attributes][0][networks]` (optional) | Must be one of: `quick_check`, `analyst_quick_check`, `deep_dive`, `analyst_quick_check_plus`
+`person[orders_attributes][0][specifications]` (optional) | Must be a Hash
+`person[orders_attributes][0][specifications][advance_options]` (optional) | Must be an Array of any type
+`person[orders_attributes][0][kind]` (optional) | Must be a String
+`person[description]` (optional) | Must be a String
+`person[files_attributes]` (optional) | Can be multiple key pair values 0, 1, 2 etc - Must be a Hash
+`person[files_attributes][0]` (optional) | Must be a Hash
+`person[files_attributes][0][kind]` (optional) | Must be one of: `user_upload`
+`person[files_attributes][0][attachment_attributes]` (optional) | Must be a Hash
+`person[to]` (optional) | Must be a String
 
-## Delete a Specific Kitten
+
+
+## Get a Specific Order
 
 ```ruby
-require 'kittn'
+OUTPUT
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
 {
-  "id": 2,
-  "deleted" : ":("
+    "status": true,
+    "people": [
+        {
+          #{person_hash}
+        }
+    ]
 }
 ```
+```javascript
 
-This endpoint deletes a specific kitten.
+```
+
+
+
+
+This endpoint retrieves a specific order.
+
+<aside class="notice">User can fetch his/her order by calling above url with specific id</aside>
+
+<aside class="success">
+Remember — Authentication header included: apikey & secret
+</aside>
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`GET http://staging.socialdiscoveryiq.com/api/v1/people/<ID>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
+ID (required) | The ID of the order to retrieve
 
+## Delete a Specific Oder
+
+```ruby
+OUTPUT
+{          
+  status: true, success: 'Person successfully Deleted!'
+}
+```
+
+
+```javascript
+
+```
+
+
+
+This endpoint deletes a specific order.
+
+<aside class="success">
+Remember — Authentication header included: apikey & secret
+</aside>
+
+### HTTP Request
+
+`DELETE http://staging.socialdiscoveryiq.com/api/v1/people/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the order to delete
+
+
+
+
+## Completed Orders
+
+```ruby
+INPUT PARAMETERS
+{          
+  {case_ids: '123,343,23432,4545'}
+}
+
+OUTPUT
+{
+  status: true, orders: [
+    {'case_id': '123', 'attachment': {'pdf': 's3_url', 'html': 's3_url'} }
+    {'case_id': '343', 'attachment': {'pdf': 's3_url', 'html': 's3_url'} }
+  ]
+}
+```
+
+
+```javascript
+
+```
+
+This endpoint checks for completed orders.
+
+<aside class="success">
+Remember — Authentication header included: apikey & secret
+</aside>
+
+### HTTP Request
+
+`GET http://staging.socialdiscoveryiq.com/api/v1/completed_orders?case_ids=<case_id>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+case_id | The ID of the completed orders to check
