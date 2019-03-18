@@ -16,7 +16,7 @@ includes:
 search: true
 ---
 
-# Social Discovery API
+# Social Discovery IQ API
 
 Api Documentation for sending report orders via API.
 
