@@ -126,7 +126,7 @@ Remember — Authentication header included: apikey & secret
     {"0":
       {"networks": "",
        "specifications": {"advance_options": ["Facebook - Friends"]},
-       "kind": "analyst_quick_check"
+       "kind": "iquick_scan"
       }
     },
    "description": "Test description"
@@ -203,7 +203,7 @@ person (required) | person hash as a parameter Validation: Must be a hash
 `person[orders_attributes][0][networks]` (optional) | Must be one of: `quick_check`, `analyst_quick_check`, `deep_dive`, `analyst_quick_check_plus`
 `person[orders_attributes][0][specifications]` (optional) | Must be a Hash
 `person[orders_attributes][0][specifications][advance_options]` (optional) | Must be an Array of any type
-`person[orders_attributes][0][kind]` (optional) | Must be a String
+`person[orders_attributes][0][kind]` (optional) | Must be one of: `analyst_quick_check`, `iquick_scan`, `fetch_standard`
 `person[description]` (optional) | Must be a String
 `person[files_attributes]` (optional) | Can be multiple key pair values 0, 1, 2 etc - Must be a Hash
 `person[files_attributes][0]` (optional) | Must be a Hash
