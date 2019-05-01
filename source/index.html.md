@@ -126,7 +126,7 @@ Remember — Authentication header included: apikey & secret
     {"0":
       {"networks": "",
        "specifications": {"advance_options": ["Facebook - Friends"]},
-       "kind": "iquick_scan"
+       "kind": "analyst_quick_check"
       }
     },
    "description": "Test description"
@@ -324,3 +324,96 @@ Remember — Authentication header included: apikey & secret
 Parameter | Description
 --------- | -----------
 case_id | The ID of the completed orders to check
+
+
+## IQUICK Scan Order
+
+> Raw hash base structure for the new iquick scan order request.
+
+```ruby
+{
+ "person":
+  {"case_id": "case1000011",
+   "first_name": "Michael",
+   "middle_name": "John",
+   "last_name": "Doe",
+   "gender": "male",
+   "dob": "01/19/1985",
+   "alias": "Mike",
+   "details":
+    {"ethnicity": ["ethnicity"],
+     "emails": [""],
+     "phones":
+      [{"phone_number": "9999999", "type": "Cell"},
+       {"phone_number": "88888888", "type": "Home"}],
+     "addresses":
+      [{"type": "Current",
+        "address": "",
+        "city": "Los Angeles",
+        "state": "California",
+        "zip": "1630"}],
+     "employment": ["maintenance"],
+     "schools": ["New state college"],
+     "relationships": ["brother"],
+     "physical_descriptions": ["thin", "muscular"],
+     "report_highlights": "yes",
+     "items_added": ""},
+   "claim": "",
+   "from": "",
+   "orders_attributes":
+    {"0":
+      {"networks": "",
+       "specifications": {"advance_options": ["Facebook - Friends"]},
+       "kind": "iquick_scan"
+      }
+    },
+   "description": "Test description"
+   },
+ "to": "Today"
+}
+
+OUTPUT
+{
+    "status": true,
+    "person_id": "#{response_id}"
+}
+```
+
+
+This endpoint request a new order.
+
+### HTTP Request
+
+`POST http://staging.socialdiscoveryiq.com/api/v1/people`
+
+<aside class="success">
+Remember — Authentication header included: apikey & secret
+</aside>
+
+
+
+### URL Parameters
+
+Same url parameter for requesting a new order. Iquick scan is added at the orders attribute.
+
+Parameter | Description
+--------- | -----------
+`person[orders_attributes][0][kind]` (optional) | Must be `iquick_scan`
+
+
+### Selected reference list 
+
+These are the selected reference and option when ordering an Iquick Scan report.
+
+* References to Illegal Drugs
+* References to Weapons
+* References to Profane Language
+* References to Threats Against Third-Parties
+* References to Violent Acts
+* References to Another Party's Race, Religion, Age, or Gender
+* References to Prior Employers or Work
+* References to End-User
+* References to Criminal Activity
+* References to Tardiness
+
+
