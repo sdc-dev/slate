@@ -380,7 +380,7 @@ OUTPUT
 ```
 
 
-This endpoint request a new order.
+This endpoint request a new order for iquick scan.
 
 ### HTTP Request
 
@@ -410,10 +410,122 @@ These are the selected reference and option when ordering an Iquick Scan report.
 * References to Profane Language
 * References to Threats Against Third-Parties
 * References to Violent Acts
-* References to Another Party's Race, Religion, Age, or Gender
+* References to Another Party’s Race or Religion
 * References to Prior Employers or Work
 * References to End-User
 * References to Criminal Activity
 * References to Tardiness
+
+## Fetch Standard Order
+<aside class="default">
+  <h3>(ON DEVELOPMENT)</h3>
+</aside>
+
+> Raw hash base structure for the new Fetch Standard order request.
+
+```ruby
+{
+ "person":
+  {"case_id": "case1000011",
+   "first_name": "Michael",
+   "middle_name": "John",
+   "last_name": "Doe",
+   "gender": "male",
+   "dob": "01/19/1985",
+   "alias": "Mike",
+   "details":
+    {"ethnicity": ["ethnicity"],
+     "emails": [""],
+     "phones":
+      [{"phone_number": "9999999", "type": "Cell"},
+       {"phone_number": "88888888", "type": "Home"}],
+     "addresses":
+      [{"type": "Current",
+        "address": "",
+        "city": "Los Angeles",
+        "state": "California",
+        "zip": "1630"}],
+     "employment": ["maintenance"],
+     "schools": ["New state college"],
+     "relationships": ["brother"],
+     "physical_descriptions": ["thin", "muscular"],
+     "report_highlights": "yes",
+     "items_added": ""},
+   "claim": "",
+   "from": "",
+   "orders_attributes":
+    {"0":
+      {"networks": "",
+       "specifications": {"advance_options": ["Facebook - Friends"]},
+       "kind": "fetch_standard"
+      }
+    },
+   "description": "Test description"
+   },
+ "to": "Today",
+ "template":
+ {"id": "",
+  "content": {"violent_acts": "on", "serving_in_a_leadership_role": "on"}
+ }
+
+ - GETTING THE CURRENT TEMPLATE -
+ - templates are stored per user account - 
+
+ "template": {"id": "123" }
+}
+
+OUTPUT
+{
+    "status": true,
+    "person_id": "#{response_id}"
+}
+```
+
+
+This endpoint request a new order for iquick scan.
+
+### HTTP Request
+
+`POST http://staging.socialdiscoveryiq.com/api/v1/people`
+
+<aside class="success">
+Remember — Authentication header included: apikey & secret
+</aside>
+
+
+
+### URL Parameters
+
+Same url parameter for requesting a new order. Iquick scan is added at the orders attribute.
+
+Parameter | Description
+--------- | -----------
+`person[orders_attributes][0][kind]` (optional) | Must be `fetch_standard`
+
+
+### Selected reference list 
+
+These are the select options when ordering a Fetch Standard report. (Negative and Positive Filters)
+
+### Negative Filters
+* References to Illegal Drugs
+* References to Weapons
+* References to Profane Language
+* References to Threats Against Third-Parties
+* References to Violent Acts
+* References to Another Party’s Race or Religion
+* References to Prior Employers or Work
+* References to End-User
+* References to Criminal Activity
+* References to Tardiness
+
+### Positive Filters
+* References to Volunteer Efforts
+* References to Community Involvements
+* References to Education
+* References to Serving in a Leadership Role
+* References to Participating on a Team
+
+
 
 
