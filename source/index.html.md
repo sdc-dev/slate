@@ -497,7 +497,7 @@ Remember — Authentication header included: apikey & secret
 
 ### URL Parameters
 
-Same url parameter for requesting a new order. Iquick scan is added at the orders attribute.
+Same url parameter for requesting a new order. Fetch Standard is added at the orders attribute.
 
 Parameter | Description
 --------- | -----------
