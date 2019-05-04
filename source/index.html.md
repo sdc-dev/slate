@@ -126,7 +126,7 @@ Remember — Authentication header included: apikey & secret
     {"0":
       {"networks": "",
        "specifications": {"advance_options": ["Facebook - Friends"]},
-       "kind": "analyst_quick_check"
+       "kind": "iquick_scan"
       }
     },
    "description": "Test description"
@@ -482,7 +482,8 @@ OUTPUT
 ```
 
 
-This endpoint request a new order for iquick scan.
+This endpoint request a new order for fetch standard.
+When ordering fetch standard, you need to add from these filters in template hash. 
 
 ### HTTP Request
 
