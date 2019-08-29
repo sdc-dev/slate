@@ -456,22 +456,17 @@ These are the selected reference and option when ordering an Iquick Scan report.
    "orders_attributes":
     {"0":
       {"networks": "",
-       "specifications": {"advance_options": ["Facebook - Friends"]},
        "kind": "fetch_standard"
       }
     },
    "description": "Test description"
    },
  "to": "Today",
- "template":
- {"id": "",
-  "content": {"violent_acts": "on", "serving_in_a_leadership_role": "on"}
- }
+ "user_template":
+   {"name": "Template new",
+    "content": { "illegal_drugs": "on", "weapons": "on", "profane_language": "on", "threats_against_third_parties": "on", "violent_acts": "on", "another_partys_race_or_religion": "on", "prior_employers_or_work": "on", "end_user": "on", "criminal_activity": "on", "tardiness": "on", "volunteer_efforts": "on", "community_involvements": "on", "education": "on", "serving_in_a_leadership_role": "on", "participating_on_a_team": "on" }
+   }
 
- - GETTING THE CURRENT TEMPLATE -
- - templates are stored per user account - 
-
- "template": {"id": "123" }
 }
 
 OUTPUT
